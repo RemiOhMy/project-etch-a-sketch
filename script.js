@@ -14,6 +14,9 @@ function updateSize(size) {
         sketchpad.removeChild(sketchpad.lastChild);
     }
 
+    gridOn = true;
+    toggleGrid();
+
     for (let i = 0; i < (size * size); i++) {
         let square = document.createElement("div");
         square.style.backgroundColor = "white";
@@ -47,6 +50,7 @@ function toggleGrid() {
         let square = squares[i];
         square.classList.toggle("grid-on");
     }
+    console.log(gridOn);
     if (gridOn) {
         gridOn = false;
         gridBtn.classList.remove("btn-on");
@@ -64,28 +68,27 @@ function changeSize() {
         return;
     }
     currentSize = size;
-    gridOn = true;
-    toggleGrid();
     updateSize(currentSize);
 }
 
 function changeMode(mode) {
-    let controls = document.querySelector(".controls").children;
-    for (let i = 0; i < controls.length; i++) {
-        let control = controls[i];
-        control.classList.remove("btn-on");
-    }
     if (mode === "colour") {
-        blackBtn.classList.toggle("btn-on");
+        blackBtn.classList.add("btn-on");
+        rainbowBtn.classList.remove("btn-on");
+        eraseBtn.classList.remove("btn-on");
         currentColour = "black";
         currentMode = "colour";
     }
     else if (mode === "rainbow") {
-        rainbowBtn.classList.toggle("btn-on");
+        blackBtn.classList.remove("btn-on");
+        rainbowBtn.classList.add("btn-on");
+        eraseBtn.classList.remove("btn-on");
         currentMode = "rainbow";
     }
     else if (mode === "erase") {
-        eraseBtn.classList.toggle("btn-on");
+        blackBtn.classList.remove("btn-on");
+        rainbowBtn.classList.remove("btn-on");
+        eraseBtn.classList.add("btn-on");
         currentColour = "white";
         currentMode = "erase";
     }
