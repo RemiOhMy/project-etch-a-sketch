@@ -74,7 +74,7 @@ button:active {
     border-bottom: solid 1px black;
 }
 
-.btn-on {
+button.btn-on {
     color: white;
     background-color: black;
 }
