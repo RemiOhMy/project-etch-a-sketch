@@ -50,7 +50,6 @@ function toggleGrid() {
         let square = squares[i];
         square.classList.toggle("grid-on");
     }
-    console.log(gridOn);
     if (gridOn) {
         gridOn = false;
         gridBtn.classList.remove("btn-on");
@@ -101,7 +100,7 @@ let currentMode = INIT_MODE;
 let currentSize = INIT_SIZE;
 
 let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
+document.body.onmousedown = (e) => (mouseDown = true, e.preventDefault());
 document.body.onmouseup = () => (mouseDown = false);
 
 function getRandomColour() {
